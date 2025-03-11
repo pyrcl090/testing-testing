@@ -1,0 +1,80 @@
+body{
+    margin: 0%;
+    padding: 0%;
+}
+div {
+    float: left;
+  }
+.crop{
+  position: relative;
+}
+img{
+    margin: 0em;
+    width: 100vw;
+    height: auto;
+    object-fit: cover;
+  }
+.layer{
+  position: absolute;
+}
+.white{
+  background-color: rgb(144, 144, 144);
+  mix-blend-mode: hue;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  transition: opacity 2s ease-in-out;
+}
+.top {
+  mix-blend-mode: difference;
+  opacity: 1;
+  filter: contrast(100%);
+  transition: mix-blend-mode 0s ease-in-out 2s;
+ }
+
+.bottom{
+  mix-blend-mode: exclusion;
+  transform: translateY(2px);
+  opacity: 1;
+  filter: contrast(140%);
+  transition: transform 2s ease-in-out, filter 2s ease-in-out;
+ }
+
+.grey{
+  background-color: #505050;
+  width: 100vw;
+  height: 100vh;
+  mix-blend-mode: hue;
+  z-index: -3;
+ }
+
+ .animate .white, 
+ .animate .grey {
+     opacity: 0;
+ }
+ 
+ .animate .bottom {
+     transform: translateY(0);
+     filter: contrast(100%);
+     mix-blend-mode: normal !important;
+ }
+ 
+ /* Change mix-blend-mode on click */
+ .animate .top {
+     mix-blend-mode: normal !important;
+ }
+
+ .reverse .white, 
+.reverse .grey {
+    opacity: 1;
+}
+
+.reverse .bottom {
+    transform: translateY(2px);
+    filter: contrast(140%);
+    mix-blend-mode: exclusion !important;
+}
+
+.reverse .top {
+    mix-blend-mode: difference !important;
+}
