@@ -3,8 +3,14 @@ body{
     padding: 0%;
 }
 div {
-    float: left;
+  float: left;
+  /* background: #805d5b; */
+  /* background: #4e3d3c; */
+  /* background: #3b1111; */
+  /* background: #111228; */
+  /* background: #845f5d; */
   }
+  
 .crop{
   position: relative;
 }
@@ -13,7 +19,12 @@ img{
     width: 100vw;
     height: auto;
     object-fit: cover;
+    /* filter: grayscale(100%) contrast(600%);
+    mix-blend-mode: exclusion;
+    opacity: 1; */
+    
   }
+
 .layer{
   position: absolute;
 }
@@ -29,7 +40,8 @@ img{
   mix-blend-mode: difference;
   opacity: 1;
   filter: contrast(100%);
-  transition: mix-blend-mode 0s ease-in-out 2s;
+  transition: opacity 2s ease-in-out, mix-blend-mode 2s ease-in-out;
+  opacity: 1;
  }
 
 .bottom{
@@ -37,7 +49,7 @@ img{
   transform: translateY(2px);
   opacity: 1;
   filter: contrast(140%);
-  transition: transform 2s ease-in-out, filter 2s ease-in-out;
+  transition: mix-blend-mode 2s ease-in-out, transform 2s ease-in-out, filter 2s ease-in-out;
  }
 
 .grey{
@@ -45,36 +57,70 @@ img{
   width: 100vw;
   height: 100vh;
   mix-blend-mode: hue;
+  transition: filter 2s ease-in-out;
   z-index: -3;
+  opacity: 1;
  }
 
- .animate .white, 
- .animate .grey {
+  
+ .animate .top,
+ .animate .grey, 
+ .animate .white {
      opacity: 0;
+     transition: opacity 0.8s ease-in;
+     will-change: opacity;
  }
  
  .animate .bottom {
      transform: translateY(0);
      filter: contrast(100%);
-     mix-blend-mode: normal !important;
+     mix-blend-mode: normal;
+     transition: filter 0.8s ease-in, transform 0.8s ease-in, mix-blend-mode 0.8s ease-in 1s;
+     will-change: transform, filter, mix-blend-mode;
  }
  
- /* Change mix-blend-mode on click */
- .animate .top {
-     mix-blend-mode: normal !important;
+ .reverse .top,
+ .reverse .grey, 
+ .reverse .white {
+     opacity: 1;
+     transition: opacity 0.8s ease-out;
  }
+ 
+ .reverse .bottom {
+     transform: translateY(2px);
+     filter: contrast(140%);
+     mix-blend-mode: exclusion;
+     transition: transform 0.8s ease-out, filter 0.8s ease-out, mix-blend-mode 0.8s ease-out 1s;
+ }
+ 
 
- .reverse .white, 
-.reverse .grey {
+ 
+ /* .animate .top,
+ .animate .grey, 
+ .animate .white{
+     opacity: 0;
+     transition-delay: 1s;
+ }
+ 
+ .animate .bottom {
+  transform: translateY(0);
+  filter: contrast(100%);
+  transition-delay: 1s;
+  mix-blend-mode: normal;
+ }
+ 
+
+.reverse .white, 
+.reverse .grey,
+.reverse .top {
     opacity: 1;
+    transition-delay: 1s;
 }
 
 .reverse .bottom {
-    transform: translateY(2px);
-    filter: contrast(140%);
-    mix-blend-mode: exclusion !important;
-}
+  mix-blend-mode: exclusion;
+  transition-delay: 1s;
+  filter: contrast(140%);
+  transform: translateY(2);
+} */
 
-.reverse .top {
-    mix-blend-mode: difference !important;
-}
